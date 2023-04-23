@@ -11,7 +11,7 @@ import SwiftUI
 struct estuary_appApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView()
         }
     }
 }
