@@ -58,11 +58,7 @@ struct DetailView: View {
                     TextExpand(text: viewModel.sneaker.story)
                         .font(.body)
                         .padding(16)
-                    // checking gradient colors
-                    HStack{
-                        Circle().fill(viewModel.colors[0])
-                        Circle().fill(viewModel.colors[1])
-                    }
+                    ButtonStack(links: viewModel.sneaker.links)
                 }
                 .navigationTitle(viewModel.sneaker.name)
             }

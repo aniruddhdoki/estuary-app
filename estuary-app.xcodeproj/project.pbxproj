@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5819F88229F2D81F00814E1D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F88129F2D81F00814E1D /* SwiftUIView.swift */; };
+		58394BEA29F5B92300058C34 /* ButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58394BE929F5B92300058C34 /* ButtonStack.swift */; };
 		587007A829F5AC3E0038A3B5 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587007A729F5AC3E0038A3B5 /* UIImageColors.swift */; };
 		5872B23A29F572FB003F9223 /* SneakerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872B23929F572FB003F9223 /* SneakerPanel.swift */; };
 		5872B23D29F57B5A003F9223 /* TextExpand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872B23C29F57B5A003F9223 /* TextExpand.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		5819F88129F2D81F00814E1D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		58394BE929F5B92300058C34 /* ButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStack.swift; sourceTree = "<group>"; };
 		587007A729F5AC3E0038A3B5 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		5872B23929F572FB003F9223 /* SneakerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerPanel.swift; sourceTree = "<group>"; };
 		5872B23C29F57B5A003F9223 /* TextExpand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExpand.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				5872B23929F572FB003F9223 /* SneakerPanel.swift */,
 				5872B23C29F57B5A003F9223 /* TextExpand.swift */,
+				58394BE929F5B92300058C34 /* ButtonStack.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				5876A7C329F5418000400031 /* Links.swift in Sources */,
 				5876A7B729F53F0000400031 /* Sneaker.swift in Sources */,
 				58C4E82E29EF3D95009DBE84 /* estuary_appApp.swift in Sources */,
+				58394BEA29F5B92300058C34 /* ButtonStack.swift in Sources */,
 				5876A7C529F5419000400031 /* Images.swift in Sources */,
 				5819F88229F2D81F00814E1D /* SwiftUIView.swift in Sources */,
 				5876A7C129F5400D00400031 /* DetailViewModel.swift in Sources */,

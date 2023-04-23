@@ -21,16 +21,15 @@ class DetailViewModel: ObservableObject {
     }
     
     func loadAndProcessImage() {
-        print("loading image")
         let task = URLSession.shared.dataTask(with: sneaker.images.original) { data, response, error in
             guard let data = data, error == nil else { return }
-            let uiImage = UIImage(data: data)!
-            print("processing image")
-            if let extractedColors = uiImage.getColors() {
-                self.colors = [Color(extractedColors.background), Color(extractedColors.secondary)]
+            if let uiImage = UIImage(data: data) {
+                if let extractedColors = uiImage.getColors() {
+                    self.colors = [Color(extractedColors.background), Color(extractedColors.secondary)]
+                }
+            } else {
+                return
             }
-            print("processing completed")
-            print(self.colors)
         }
         task.resume()
     }
@@ -50,7 +49,6 @@ class DetailViewModel: ObservableObject {
         let color = UIColor(ciColor: ciColor).withAlphaComponent(1)
         let complementaryColor = color.complementaryColor.withAlphaComponent(1)
         let imageColors = [Color(color), Color(complementaryColor)]
-        print("processed colors: \(imageColors)")
         self.colors = imageColors
     }
 }
@@ -103,9 +101,7 @@ extension UIColor {
         // Add 0.5 to the hue and take the modulo to wrap it around
         hue += 0.5
         hue.formTruncatingRemainder(dividingBy: 1)
-        
-        print("\(hue)")
-        
+                
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 }
