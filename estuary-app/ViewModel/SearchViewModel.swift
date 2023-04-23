@@ -23,20 +23,20 @@ class SearchViewModel: ObservableObject {
 //        }
 //
 //        let request = NSMutableURLRequest(
-//            url: url,
+////            url: url,
 //            cachePolicy: .useProtocolCachePolicy,
 //            timeoutInterval: 10.0
 //        )
 //        request.httpMethod = "GET"
 //        request.allHTTPHeaderFields = headers
-//
+
 //        let session = URLSession.shared
 //        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
 //            if (error != nil) {
 //                print(error as Any)
 //            } else {
 //                let response = response
-//                print(response)
+//                print(response as Any)
 //                guard let json = try? JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
 //                    print("error serializing JSON")
 //                    return
