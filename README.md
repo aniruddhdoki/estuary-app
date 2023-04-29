@@ -1,4 +1,4 @@
-# estuary
+# sneaker-gallery
 
 built an app to appreciate the beauty of sneakers
 
