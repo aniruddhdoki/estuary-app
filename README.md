@@ -9,8 +9,9 @@ built an app to appreciate the beauty of sneakers
 i extract the main colors of the shoe to create a custom linear gradient for the background of the shoe's detail view, allowing you to be fully immersed in the artisanship of each sneaker.
 
 ## future implementations: 
-- get search functionality to work
-  - users can look up any shoe and appreciate its beauty
+- create a cooler experience like grailed
+- typography edits
+- create a more unique design language
 
 ## resources
 i used the [UIImageColors by @jathu](https://github.com/jathu/UIImageColors) package to accomplish the final version of the background gradient generation. Jathu's solution is great, completely recommend using his package. he uses the histogram approach to getting the main colors from the image, which is pretty effective and takes a while to create custom.
