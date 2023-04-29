@@ -8,16 +8,24 @@
 import Foundation
 
 struct Links {
-    let stockX: URL
-    let goat: URL
-    let flightClub: URL
-    let stadiumGoods: URL
+    var stockX: URL = URL(string: "https://goat.com/sneakers/kobe-9-id-galaxy-688501-996")!
+    var goat: URL = URL(string: "https://goat.com/sneakers/kobe-9-id-galaxy-688501-996")!
+    var flightClub: URL = URL(string: "https://goat.com/sneakers/kobe-9-id-galaxy-688501-996")!
+    var stadiumGoods: URL = URL(string: "https://goat.com/sneakers/kobe-9-id-galaxy-688501-996")!
     
     init(json: [String: Any]) {
-        self.stockX = URL(string: json["stockX"] as! String)!
-        self.goat = URL(string: json["goat"] as! String)!
-        self.flightClub = URL(string: json["flightClub"] as! String)!
-        self.stadiumGoods = URL(string: json["stadiumGoods"] as! String)!
+        if let stockX = URL(string: json["stockX"] as! String) {
+            self.stockX = stockX
+        } else {return}
+        if let goat = json["goat"] {
+            self.goat = URL(string: goat as! String)!
+        } else {return}
+        if let flightClub = json["flightClub"] {
+            self.flightClub = URL(string: flightClub as! String)!
+        } else {return}
+        if let stadiumGoods = json["stadiumGodds"] {
+            self.goat = URL(string: stadiumGoods as! String)!
+        } else {return}
     }
     
     init(stockX: URL, goat: URL, flightClub: URL, stadiumGoods: URL) {

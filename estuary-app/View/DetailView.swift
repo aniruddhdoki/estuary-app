@@ -58,7 +58,7 @@ struct DetailView: View {
                     TextExpand(text: viewModel.sneaker.story)
                         .font(.body)
                         .padding(16)
-                    ButtonStack(links: viewModel.sneaker.links)
+//                    ButtonStack(links: viewModel.sneaker.links)
                 }
                 .navigationTitle(viewModel.sneaker.name)
             }

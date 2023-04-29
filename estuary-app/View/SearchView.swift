@@ -17,39 +17,40 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HStack(){
-                    Button(action: {
-                        viewModel.search()
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    TextField("Search by brand, color...", text: $viewModel.searchText)
-                        .padding(.horizontal, 5.0)
-                    Image(systemName: "slider.horizontal.3")
-                }.padding(.all, 10.0)
-                
-                Divider()
-                 .frame(height: 1)
-                
-                LazyVGrid(columns: columns, spacing: 0, content: {
-                    ForEach(viewModel.sneakers, id: \.id) { sneaker in
-                        NavigationLink(destination: DetailView(sneaker: sneaker)){
-                            SneakerPanel(sneaker: sneaker)
-                                .aspectRatio(1.0, contentMode: .fit)
+            ScrollView {
+                VStack {
+                    HStack(){
+                        Button(action: {
+                            viewModel.search() 
+                        }) {
+                            Image(systemName: "magnifyingglass")
                         }
-                    }
-                }).padding(.horizontal, 10.0)
-                Spacer()
+                        .buttonStyle(BorderlessButtonStyle())
+                        TextField("Search by brand, color...", text: $viewModel.searchText)
+                            .padding(.horizontal, 5.0)
+                        Image(systemName: "slider.horizontal.3")
+                    }.padding(.all, 10.0)
+                    
+                    Divider()
+                        .frame(height: 1)
+                    
+                    LazyVGrid(columns: columns, spacing: 0, content: {
+                        ForEach(viewModel.sneakers, id: \.id) { sneaker in
+                            NavigationLink(destination: DetailView(sneaker: sneaker)){
+                                SneakerPanel(sneaker: sneaker)
+                                    .aspectRatio(1.0, contentMode: .fit)
+                            }
+                        }
+                    }).padding(.horizontal, 10.0)
+                    Spacer()
+                }
+            }
+            .onAppear {
+                // Set initial search query
+                viewModel.search()
             }
         }
-        .onAppear {
-            // Set initial search query
-            viewModel.search()
-        }
     }
-    
 }
 
 struct SearchView_Previews: PreviewProvider {

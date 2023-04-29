@@ -13,52 +13,63 @@ class SearchViewModel: ObservableObject {
     @Published var resultsLimit = 10
 
     func search() {
-//        let headers = [
-//            "X-RapidAPI-Key": "348f9e23aemshcacce315b9853fep1b7f84jsn2339aaea13bb",
-//            "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com"
-//        ]
-//        guard let searchTextEncoded = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-//              let url = URL(string: "https://the-sneaker-database.p.rapidapi.com/search?limit=\(resultsLimit)&q=\(searchTextEncoded)") else {
-//            return
-//        }
-//
-//        let request = NSMutableURLRequest(
-////            url: url,
-//            cachePolicy: .useProtocolCachePolicy,
-//            timeoutInterval: 10.0
-//        )
-//        request.httpMethod = "GET"
-//        request.allHTTPHeaderFields = headers
+        let headers = [
+            "content-type": "application/octet-stream",
+            "X-RapidAPI-Key": "348f9e23aemshcacce315b9853fep1b7f84jsn2339aaea13bb",
+            "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com"
+        ]
+        let request = NSMutableURLRequest(url: NSURL(string: "https://the-sneaker-database.p.rapidapi.com/search?limit=10&query=kobe")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
 
-//        let session = URLSession.shared
-//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-//            if (error != nil) {
-//                print(error as Any)
-//            } else {
-//                let response = response
-//                print(response as Any)
-//                guard let json = try? JSONSerialization.jsonObject(with: data!) as? [String: Any] else {
-//                    print("error serializing JSON")
-//                    return
-//                }
-//                let results = json["results"]
-//                for result in results as! [[String: Any]] {
-//                    print("sneaker products generating")
-//                    self.sneakers.append(Sneaker(json: result))
-//                }
-//            }
-//        })
-//        dataTask.resume()
-//        print(sneakers)
-    }
-    
-    init() {
-        sneakers.append(contentsOf: [
-            sneaker1,
-            sneaker2,
-            sneaker3,
-            sneaker7,
-        ])
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                guard let data = data else {
+                    return
+                }
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any], let results = json["results"] as? [[String: Any]] {
+                        for var result in results {
+                            print(result["image"]!)
+
+                            if let image = result["image"] {
+                                result["image"] = image as! [String: Any]
+                            } else {
+                                result["image"] = [
+                                    "original": "",
+                                    "small": "",
+                                    "thumbnail": ""
+                                ]
+                            }
+                            print(result["image"]!)
+                            print(result["links"]!)
+                            if let links = result["links"] {
+                                result["links"] = links as! [String: String]
+                                print(result["links"]!)
+                            } else {
+                                result["links"] = [
+                                    "stockX": "www.base.com",
+                                    "goat": "www.base.com",
+                                    "stadiumGoods": "www.base.com",
+                                    "flightClub": "www.base.com"
+                                ]
+                            }
+//                            print(result["links"]!)
+                            self.sneakers.append(Sneaker(json: result))
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        })
+        dataTask.resume()
+        print("data queried")
     }
     
     let sneaker1 = Sneaker(
